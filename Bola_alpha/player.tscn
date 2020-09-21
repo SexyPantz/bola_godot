@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://g0001.png" type="Texture" id=2]
+[ext_resource path="res://g0002.png" type="Texture" id=3]
+[ext_resource path="res://g0003.png" type="Texture" id=4]
+[ext_resource path="res://g0004.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 30.6305
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "air",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "jump",
+"speed": 16.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[node name="Player" type="KinematicBody2D"]
+
+position = Vector2( 1.19209e-006, 1.19209e-006 )
+scale = Vector2( 0.9375, 0.9375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "collision" ]
+SPEED = null
+GRAVITY = null
+JUMP_HEIGHT = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( -1.3113e-006, -14.9333 )
+scale = Vector2( 0.351228, 0.351228 )
+frames = SubResource( 2 )
+animation = "idle"
+frame = 2
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+
